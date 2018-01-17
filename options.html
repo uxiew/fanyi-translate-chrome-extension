@@ -1,0 +1,643 @@
+<html>
+
+<head>
+	<title>翻译插件设置</title>
+	<meta charset="utf-8">
+<link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style type="text/css">
+		html,
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		hr,
+		div,
+		p,
+		ul,
+		li,
+		ol,
+		dl,
+		dt,
+		dd,
+		blockquote,
+		pre,
+		button,
+		input,
+		textarea,
+		th,
+		td {
+			margin: 0;
+			padding: 0;
+			font-family: "微软雅黑";
+		}
+
+		a {
+			font-size: 12px;
+		}
+
+		body {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+
+		#header {
+			height: 90px;
+			line-height: 90px;
+			width: 100%;
+			border-bottom: 1px solid #E4E4E4;
+		}
+
+		#header_content {
+			width: 900px;
+			margin: 0 auto;
+		}
+
+		#header img {
+			margin-top: 27px;
+			margin-right: 20px;
+			float: left;
+			width: 44px;
+			height: 44px;
+		}
+
+		#header #title {
+			float: left;
+			font-size: 30px;
+			font-family: "微软雅黑";
+			font-weight: 100;
+			color: #000000;
+		}
+
+		#container {
+			font-family: "微软雅黑";
+			width: 900px;
+			margin: 0 auto;
+			font-size: 14px;
+		}
+
+		#container .title {
+			margin-top: 50px;
+			margin-bottom: 27px;
+			font-size: 16px;
+			font-family: "微软雅黑";
+			color: #000000;
+		}
+
+		#container .line,
+		#container .webPage {
+			width: 100%;
+		}
+
+		#container .line .content,
+		#container .webPage .content {
+			overflow: hidden;
+		}
+
+		.Left {
+			float: left;
+		}
+
+		.chooseOne,
+		.chooseTwo {
+			overflow: hidden;
+		}
+
+		#chooseWordIsOpen {
+			font-size: 14px;
+			height: 28px;
+			line-height: 28px;
+			width: auto;
+			padding-left: 29px;
+			cursor: pointer;
+			display: inline-block;
+			color: #000;
+			background: url("images/btn_checkboxoff_normal.png") no-repeat 0 7px;
+		}
+
+		#lineInnerBox {
+			margin-left: 29px;
+			position: relative;
+		}
+
+		#lineInnerBox #instruction {
+			font-size: 14px;
+			line-height: 28px;
+			height: 28px;
+			color: #000;
+			font-family: "微软雅黑";
+		}
+
+		#chooseWordIsOpen:hover {
+			background: url("images/btn_checkboxoff_hover.png") no-repeat 0 7px;
+		}
+
+		#chooseWordIsOpen:active {
+			background: url("images/btn_checkboxoff_press.png") no-repeat 0 7px;
+		}
+
+		#chooseWordIsOpen.checked {
+			background: url("images/btn_checkboxon_normal.png") no-repeat 0 7px;
+		}
+
+		#chooseWordIsOpen.checked:hover {
+			background: url("images/btn_checkboxon_hover.png") no-repeat 0 7px;
+		}
+
+		#chooseWordIsOpen.checked:active {
+			background: url("images/btn_checkboxon_press.png") no-repeat 0 7px;
+		}
+
+		#webPageIsOpen {
+			font-size: 14px;
+			height: 34px;
+			line-height: 34px;
+			width: auto;
+			padding-left: 29px;
+			cursor: pointer;
+			display: inline-block;
+			/*阻止文字被选中*/
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+			background: url("images/btn_checkboxoff_normal.png") no-repeat 0 10px;
+		}
+
+		#webPageIsOpen:hover {
+			background: url("images/btn_checkboxoff_hover.png") no-repeat 0 10px;
+		}
+
+		#webPageIsOpen:active {
+			background: url("images/btn_checkboxoff_press.png") no-repeat 0 10px;
+		}
+
+		#webPageIsOpen.checked {
+			background: url("images/btn_checkboxon_normal.png") no-repeat 0 10px;
+		}
+
+		#webPageIsOpen.checked:hover {
+			background: url("images/btn_checkboxon_hover.png") no-repeat 0 10px;
+		}
+
+		#webPageIsOpen.checked:active {
+			background: url("images/btn_checkboxon_press.png") no-repeat 0 10px;
+		}
+
+		#autoTransAfterT {
+			font-size: 14px;
+			height: 34px;
+			line-height: 34px;
+			width: auto;
+			padding-left: 43px;
+			cursor: pointer;
+			display: inline-block;
+			/*阻止文字被选中*/
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+			background: url("images/btn_checkboxoff_normal.png") no-repeat 15px 10px;
+		}
+
+		#autoTransAfterT:hover {
+			background: url("images/btn_checkboxoff_hover.png") no-repeat 15px 10px;
+		}
+
+		#autoTransAfterT:active {
+			background: url("images/btn_checkboxoff_press.png") no-repeat 15px 10px;
+		}
+
+		#autoTransAfterT.checked {
+			background: url("images/btn_checkboxon_normal.png") no-repeat 15px 10px;
+		}
+
+		#autoTransAfterT.checked:hover {
+			background: url("images/btn_checkboxon_hover.png") no-repeat 15px 10px;
+		}
+
+		#autoTransAfterT.checked:active {
+			background: url("images/btn_checkboxon_press.png") no-repeat 15px 10px;
+		}
+
+		#autoTransdesignated {
+			font-size: 14px;
+			height: 34px;
+			line-height: 34px;
+			width: auto;
+			padding-left: 29px;
+			cursor: pointer;
+			display: inline-block;
+			/*阻止文字被选中*/
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+			background: url("images/btn_checkboxoff_normal.png") no-repeat 0 10px;
+		}
+
+		#autoTransdesignated:hover {
+			background: url("images/btn_checkboxoff_hover.png") no-repeat 0 10px;
+		}
+
+		#autoTransdesignated:active {
+			background: url("images/btn_checkboxoff_press.png") no-repeat 0 10px;
+		}
+
+		#autoTransdesignated.checked {
+			background: url("images/btn_checkboxon_normal.png") no-repeat 0 10px;
+		}
+
+		#autoTransdesignated.checked:hover {
+			background: url("images/btn_checkboxon_hover.png") no-repeat 0 10px;
+		}
+
+		#autoTransdesignated.checked:active {
+			background: url("images/btn_checkboxon_press.png") no-repeat 0 10px;
+		}
+
+		#chooseOne {
+			font-size: 14px;
+			height: 24px;
+			line-height: 24px;
+			width: auto;
+			margin-top: 13px;
+			padding-left: 29px;
+			cursor: pointer;
+			display: inline-block;
+			/*阻止文字被选中*/
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+			background: url("images/Radiobox_Normal.png") no-repeat 0 5px;
+		}
+
+		#chooseOne:hover {
+			background: url("images/Radiobox_Hover.png") no-repeat 0 5px;
+		}
+
+		#chooseOne:active {
+			background: url("images/Radiobox_Press.png") no-repeat 0 5px;
+		}
+
+		#chooseOne.checked {
+			background: url("images/Radiobox_C_Normal.png") no-repeat 0 5px;
+		}
+
+		#chooseOne.checked:hover {
+			background: url("images/Radiobox_C_Hover.png") no-repeat 0 5px;
+		}
+
+		#chooseOne.checked:active {
+			background: url("images/Radiobox_C_Press.png") no-repeat 0 5px;
+		}
+
+		#chooseTwo {
+			font-size: 14px;
+			height: 24px;
+			line-height: 24px;
+			width: auto;
+			padding-left: 29px;
+			cursor: pointer;
+			display: inline-block;
+			/*阻止文字被选中*/
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+			background: url("images/Radiobox_Normal.png") no-repeat 0 5px;
+		}
+
+		#chooseTwo:hover {
+			background: url("images/Radiobox_Hover.png") no-repeat 0 5px;
+		}
+
+		#chooseTwo:active {
+			background: url("images/Radiobox_Press.png") no-repeat 0 5px;
+		}
+
+		#chooseTwo.checked {
+			background: url("images/Radiobox_C_Normal.png") no-repeat 0 5px;
+		}
+
+		#chooseTwo.checked:hover {
+			background: url("images/Radiobox_C_Hover.png") no-repeat 0 5px;
+		}
+
+		#chooseTwo.checked:active {
+			background: url("images/Radiobox_C_Press.png") no-repeat 0 5px;
+		}
+
+		#model {
+			height: 100%;
+			width: 100%;
+			opacity: 0.7;
+			position: absolute;
+			background: #fff;
+			display: none;
+		}
+
+		#manageWebBox {
+			height: 375px;
+			width: 600px;
+			position: absolute;
+			background: #FFFFFF;
+			border: 1px solid rgba(0, 0, 0, 0.10);
+			background: white;
+			box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.10);
+			border-radius: 2px;
+			left: 28%;
+			top: 18%;
+			z-index: 3;
+			display: none;
+		}
+
+		.manageWebBox_opacity {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			background: white;
+			opacity: 0.8;
+			display: none;
+			z-index: 1;
+		}
+
+		.manageWebBoxOutDiv {
+			margin-top: 20px;
+			margin-left: 20px;
+			/*	width:100%;*/
+			/*height:12px;*/
+			overflow: hidden;
+		}
+
+		.returnX {
+			float: right;
+			width: 13px;
+			margin-right: 20px;
+			cursor: pointer;
+		}
+
+		.manageWebBoxHeader {
+			font-size: 14px;
+			color: #000;
+			float: left;
+		}
+
+		.manageWebBox_inputOutDiv {
+			position: relative;
+			margin-left: 20px;
+			margin-top: 15px;
+		}
+
+		.addAdressValue {
+			padding-left: 10px;
+			height: 30px;
+			background: #F0F0F0;
+			border-radius: 3px;
+			width: 448px;
+			outline: none;
+			border: #F0F0F0;
+			float: left;
+		}
+
+		.addAdressButton {
+			float: left;
+			margin-left: 10px;
+			height: 30px;
+			text-align: center;
+			width: 100px;
+			background: white;
+			outline: none;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			font-size: 12px;
+			cursor: pointer;
+			display: inline-block;
+			line-height: 30px;
+			text-align: center;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+
+		.addAdressButton:hover {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: #FFFFFF;
+		}
+
+		.addAdressButton:active {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: rgba(0, 0, 0, 0.1);
+		}
+
+		.delAdressButton {
+			height: 30px;
+			width: 100px;
+			background: white;
+			outline: none;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			font-size: 12px;
+			text-align: center;
+			position: absolute;
+			right: 20px;
+			top: 40px;
+			cursor: pointer;
+			display: inline-block;
+			line-height: 30px;
+			text-align: center;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+
+		.delAdressButton:hover {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: #FFFFFF;
+		}
+
+		.delAdressButton:active {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: rgba(0, 0, 0, 0.1);
+		}
+
+		.finishButton {
+			height: 30px;
+			width: 100px;
+			background: white;
+			outline: none;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			font-size: 12px;
+			text-align: center;
+			position: absolute;
+			right: 20px;
+			top: 269px;
+			cursor: pointer;
+			display: inline-block;
+			line-height: 30px;
+			text-align: center;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+
+		.finishButton:hover {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: #FFFFFF;
+		}
+
+		.finishButton:active {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: rgba(0, 0, 0, 0.1);
+		}
+
+		.blackListContent {
+			height: 226px;
+			width: 445px;
+			margin-left: 21px;
+			margin-top: 55px;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			overflow:auto;
+		}
+
+		.blackListContent p {
+			height: 28px;
+			font-size: 12px;
+			line-height: 28px;
+			overflow-y: auto;
+			cursor: pointer;
+			overflow-wrap: break-word;
+			padding-left: 10px;
+		}
+
+		.manageBuSty {
+			width: 102px;
+			height: 30px;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			margin-left: 20px;
+			outline: none;
+			background: #fff;
+			cursor: pointer;
+			display: inline-block;
+			line-height: 30px;
+			text-align: center;
+		}
+
+		.manageBuSty:hover {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: #FFFFFF;
+		}
+
+		.manageBuSty:active {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			background: rgba(0, 0, 0, 0.1);
+		}
+
+		.disable {
+			background: #fff;
+			color: #000;
+			cursor: default;
+			position: absolute;
+			width: 106px;
+			height: 34px;
+			opacity: 0.3;
+			top: 0px;
+			left: 179px;
+			display: none;
+		}
+
+		#highlight {
+			background: #E5F5FD;
+			position: absolute;
+			height: 34px;
+			animation: mymove 1s;
+			z-index: -1;
+			opacity: 0;
+		}
+
+		@keyframes mymove {
+			0% {
+				opacity: 0;
+			}
+			50% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
+	</style>
+	<script type="text/javascript" src="js/filtercontent.js"></script>
+</head>
+
+<body>
+	<div class="manageWebBox_opacity"></div>
+	<div id="header">
+		<div id="header_content">
+			<img src="images/48yiiconBlack.png">
+			<h1 id="title">翻译插件设置</h1>
+		</div>
+	</div>
+	<div id="container">
+		<div class="line" style="padding-left: 15px;">
+			<h2 class="title">划词翻译</h2>
+			<div class="content">
+				<label id="chooseWordIsOpen">
+					<span>开启划词翻译</span>
+				</label>
+				<div id="lineInnerBox">
+					<div id="model"></div>
+					<p id="instruction">选中网页上的文字和句子时:</p>
+					<label id="chooseOne">
+						<span>显示翻译图标，点击翻译</span>
+					</label>
+					<br/>
+					<label id="chooseTwo">
+						<span>直接翻译</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="webPage">
+			<h2 class="title" style="padding-left: 15px;">网页翻译</h2>
+			<div class="content">
+				<div style="padding-left: 15px; position: relative;">
+					<label id="webPageIsOpen">
+						<span>访问非中文网站时，自动提醒是否需要翻译</span>
+					</label>
+					<div class="disable" id="manageWebDisable" style="left: 334px;"></div>
+					<a id="manageWeb" class="manageBuSty">管理例外网站</a>
+				</div>
+				<div style="padding-left: 15px;display: inline-block;width: 367px;" id="highlight"></div>
+				<label id="autoTransAfterT">
+					<span>在已完成翻译的页面中，自动翻译后续打开的页面</span>
+				</label>
+
+
+				<div style="padding-left: 15px; position: relative;">
+					<label id="autoTransdesignated">
+						<span>自动翻译指定网站</span>
+					</label>
+					<div class="disable" id="manageWhiteButtonDisable"></div>
+					<a id="manageWhiteButton" class="manageBuSty">管理指定网站</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="manageWebBox">
+		<div class="manageWebBoxOutDiv">
+			<div class="manageWebBoxHeader"></div>
+			<img class="returnX" src="images/timg.png" />
+		</div>
+		<div class="manageWebBox_inputOutDiv">
+			<input placeholder="请输入要添加的网址" class="addAdressValue">
+			<a class="addAdressButton">添加网址</a>
+			<a class="delAdressButton">删除所选项</a>
+			<a class="finishButton">完成</a>
+		</div>
+		<div class="blackListContent"></div>
+	</div>
+	<script type="text/javascript" src='js/filtercontent.js'></script>
+	<script type="text/javascript" src="js/option.js"></script>
+</body>
+
+</html>

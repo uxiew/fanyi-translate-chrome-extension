@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>右上角的按钮弹出页</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style type="text/css">
+        html,body,div,span,object,iframe,h1,h2,h3,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,small,strike,strong,sub,sup,tt,td,
+var,u,i,dl,dt,dd,ol,ul,li,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+aside,canvas,nav,menu,output,section,time,mark,audio,video{
+            margin: 0;
+            padding: 0;
+            font-family: "微软雅黑";
+        }
+        /*body{
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }*/
+        #yc-baidu-translate {
+            width: 450px;
+            background-color:#fff;
+            font: 12px "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "微软雅黑", sans-serif;
+            margin: 0;
+            padding: 0;
+            /*height: 262px;*/
+        }
+
+        #yc-baidu-translate{
+            margin: 0;
+            padding: 0;
+        }
+        #yc-baidu-translate .container{
+            padding:0 10px;
+        }
+        #yc-baidu-translate .container .header {
+            display: none;
+            height: 52px;
+            text-align: center;
+            padding-left:5px;
+        }
+        #trans_finish{
+            margin-right: 8px;
+            float: left;
+            margin-top: 16px;
+            display: none;
+        }
+        #translate-page{
+            float: left;
+        }
+        #yc-baidu-translate .container .header .header_title{
+            line-height: 52px;
+            float: left;
+            font-size: 14px;
+            color: #333;
+        }
+        #yc-baidu-translate .container .header .header_button{
+            line-height: 52px;
+            float: right;
+            font-size: 13px;
+        }
+        #yc-baidu-translate .container .header .header_button .translateButton{
+            margin-top: 9px;
+            float: left;
+            background: -webkit-linear-gradient(left, #00B9F8 , #007EF1);
+            border:none;
+            min-width: 96px;
+            padding: 0 10px;
+            color:white;
+            outline:none;
+            margin-right: 10px;
+            height: 32px;
+            border-radius: 4px;
+            font-family: "微软雅黑";
+            cursor: pointer;
+        }
+         #yc-baidu-translate .container .header .header_button .compareButton{
+               
+            float: right;
+            width:96px;
+            border:1px solid rgba(0,0,0,0.12);
+            background:#fff;
+            color:#009DF2;
+            outline:none;
+            height: 32px;
+            float: right;
+            margin-top: 9px;
+            border-radius: 4px;
+            font-family: "微软雅黑";
+            cursor: pointer;
+        }
+        #yc-baidu-translate .container .main{
+            font-family: "微软雅黑"!important;
+            width: 100%;
+            height: 170px;
+            margin-top: 10px;
+        }
+        #yc-baidu-translate .container .main .selectEn,#yc-baidu-translate .container .main .selectZh{
+            float: left;
+            
+            border: 1px solid #e5e5e5;
+            padding: 10px;
+            font-family: "微软雅黑";
+        }
+        #yc-baidu-translate .container .main .selectEn{
+            padding: 10px 10px 0 14px;
+            height: 158px;
+            width:187px;
+            position: relative;
+            font-family: "微软雅黑";
+        }
+        #yc-baidu-translate .container .main .selectEn #change{
+            transform:rotate(0deg);
+            transition:all 0.5s;
+            margin-top: 5px;
+        }
+        #yc-baidu-translate .container .main .selectZh{
+            height: 158px;
+            border-left: none;
+            padding: 10px 0px 0 15px;
+            width:198px;
+            background:#f8f8f8;
+            font-family: "微软雅黑";
+            padding-right: 3px;
+        }
+        #yc-baidu-translate .container .main .selectEn .selectEn_top{
+            height: 31px;
+            font-family: "微软雅黑";
+        }
+        .selectLeft{
+            float: left;
+            background: url("images/IconArrowDown.png") no-repeat scroll right center transparent;
+            width: 70px;
+            margin-top: 4px;
+            line-height: 12px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        #yc-baidu-translate .container .main .selectZh .selectZh_top{
+            height: 31px;
+        }
+        /*ul*/
+        .select-inner{
+            font-size: 12px;
+            display: none;
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            outline: none;
+            font-family: "微软雅黑";
+            cursor: pointer;
+            position: absolute;
+            list-style: none;
+            left: -14px;
+            top: 20px;
+            width: 78px;
+            border-left: none;
+            z-index: 1;
+        }
+        .selectRight{
+            float: left;
+            background: url("images/IconArrowDown.png") no-repeat scroll right center transparent;
+            width: 43px;
+            margin-top: 4px;
+            font-size: 12px;
+            line-height: 12px;
+            cursor: pointer;
+            margin-bottom: 10px; 
+            position: relative;   
+        }
+        .selectUl{
+            font-size: 12px;
+            display: none;
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            outline: none;
+            font-family: "微软雅黑";
+            cursor: pointer;
+            position: absolute;
+            list-style: none;
+            left: -15px;
+            top: 20px;
+            width: 78px;
+            border-left: none;
+            z-index: 1;
+        }
+        .selectUl li{
+            padding: 5px 0 5px 15px;    
+        }
+        .select-inner li{
+            padding: 5px 0 5px 15px;
+        }
+        #yc-baidu-translate .container .main .selectEn .trans_content,#yc-baidu-translate .container .main .selectZh .trans_content{
+            height: 128px;
+            font-family: "微软雅黑";
+        }
+        #yc-baidu-translate .container .main .selectEn .trans_content button{
+            position: absolute;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #009DF2;
+            bottom: 11px;
+            background: white;
+            right: 15px;
+            font-family: "微软雅黑";
+            /*cursor: pointer;*/
+        }
+        #yc-baidu-translate .container .main .selectEn .trans_content textarea,#yc-baidu-translate .container .main .selectZh .trans_content article{
+            border: none;
+            width: 100%;
+            height: 87px;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+            font-family: "微软雅黑";
+            overflow: auto;
+        }
+        #yc-baidu-translate .container .main .selectZh .trans_content article{
+            height: 100%;
+        }
+        #yc-baidu-translate .container .main .selectEn .selectEn_top img{
+            float: right;
+        }
+        #yc-baidu-translate .container .footer {
+            padding: 5px 0px 0px 5px;
+            height : 35px;
+            color:#888;
+            font-family: "微软雅黑";
+        }
+        #yc-baidu-translate .container .footer .trans-p{
+            float: left;
+            font-family: "微软雅黑";
+        }   
+        #yc-baidu-translate .container .footer .trans-setting{
+            float: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }       
+        #yc-baidu-translate .container .footer .trans-setting p{
+            float: left;
+            margin-left: 20px;          
+            color: #333;
+            font-family: "微软雅黑";
+        }   
+        #yc-baidu-translate .container .footer .trans-setting p a{
+            text-decoration: none; 
+            color:#333;
+            font-family: "微软雅黑";
+        }  
+       /* #yc-baidu-translate .container .footer .trans-setting p a #imga{
+            margin-left: 4px;
+        }  */
+       /* #afterTransContent .Thead{
+            height: 30px;
+        }  
+        #afterTransContent .Thead .Tname{
+            display: inline;
+            margin-right: 10px;
+        } 
+        #afterTransContent .Thead .Tpronunciation{
+            display: inline;
+            color: #888;
+        } */ 
+        #afterTransContent{
+            height: 79px;
+            overflow: auto;
+/*            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;*/
+        } 
+        #afterTransContent .Tcharacteristicdiv{
+            margin-bottom: 3px;
+        } 
+        #afterTransContent .Tcharacteristicdiv .Tcharacteristic{
+            opacity: 0.5;
+            font-family: "微软雅黑";
+            font-size: 14px;
+            color: #000;
+            line-height: 14px;
+            margin-right: 5px;
+        } 
+        #afterTransContent .Tcharacteristicdiv .Ttransresult{
+            font-size: 14px;
+            line-height: 14px;
+            font-family: "微软雅黑"
+        }
+        .transSetting{
+            
+            display: inline-block!important;
+            height: 10px!important;
+            /* vertical-align: middle; */
+            line-height: 10px!important;
+            font-size: 12px!important;
+        }
+       
+        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+        /*select::-ms-expand { display: none; }   */
+        </style>
+    </head>
+    
+    <body id="yc-baidu-translate">
+        <div class="container">
+            <div class="header">
+                <div class="header_title">
+                    <img id="trans_finish" />
+                    <p id="translate-page">是否将当前网页翻译成中文?</p>
+                </div>  
+                <div class="header_button">
+                    <button class="translateButton">翻译网页</button>
+                    <button class="compareButton">中英对照</button>
+                </div>             
+            </div>
+           
+            <div class="main">
+                <div class="selectEn">  
+                    <div class="selectEn_top">
+                        <div class="selectLeft">
+                            <div class="selectList" style="font-size: 14px;">自动检测</div>
+                            <ul class="select-inner">
+                                <li value="auto">自动检测</li>
+                                <li value="zh">中文</li>
+                                <li value="en">英文</li>
+                                <li value="jp">日文</li>
+                                <li value="kor">韩文</li>
+                            </ul>
+                        </div>
+                        
+                        <img id="change">
+                    </div>              
+                    <div class="trans_content">
+                        <textarea placeholder="查单词或翻译句子" id="searchTrans" autofocus="autofocus"></textarea>
+                        <!-- <button id="clickTrans"></button> -->
+                    </div>
+                </div>
+                
+                <div class="selectZh">
+                    <div class="selectZh_top">
+                        <div class="selectRight">
+                            <div class="selectCon" style="font-size: 14px;">中文</div>
+                            <ul class="selectUl">
+                                <li value="zh">中文</li>
+                                <li value="en">英文</li>
+                                <li value="jp">日文</li>
+                                <li value="kor">韩文</li>
+                            </ul>
+                        </div>
+                    </div> 
+                    <div class="trans_content">
+                        <article id="afterTransContent">
+                            
+                        </article>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="trans-p" style=" margin-top: 6px;">
+                   <img style="width:91px; height:18px; " id="tencentTransMan" />
+                </div>
+                <div class="trans-setting" style=" line-height: 30px;">
+                    <p style="margin-right:5px;"><a href="#" class="transSetting">设置</a></p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src='js/filtercontent.js'></script>
+        <script type="text/javascript" src="js/popup.js"></script>
+    </body>
+</html>

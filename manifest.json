@@ -1,0 +1,53 @@
+{
+	"manifest_version": 2,
+  // "is_account_related":false,
+	"background": {
+	  "page": "background.html"
+	},
+	"name": "翻译",
+	"description": "用于语言转换",
+	"version": "3.1.1",
+	// "group": "qb-extension",
+	"content_scripts": [ {
+		"css":["css/style.css"],
+		"js": ["js/filtercontent.js","js/content.js"],
+		"matches": ["http://*/*", "https://*/*", "file://*"],
+	  "exclude_matches": [],
+		"run_at": "document_end"
+	} ],
+	"icons": {
+    "16": "images/16yiiconBlack.png",
+    "48": "images/48yiiconBlack.png",            
+    "128": "images/128yiiconBlack.png" 
+  },
+  "options_page": "options.html",
+	"permissions": [ 
+		"management",
+		"*://*/*",
+		"activeTab",
+		"tabs",
+		"contextMenus",
+		"webRequest",
+		"webRequestBlocking",
+		"storage"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://hm.baidu.com; object-src 'self'",
+	"web_accessible_resources": [
+      "images/img_logo16.png",
+      "images/timg.png",
+      "images/IconFinsh.png",
+      "images/BtnClose2.png",
+      "images/IconArrowRight.png",
+      "images/img_logo.png",
+      "images/IconChange.png",
+      "images/powered.png",
+      "images/*.png",
+      "options.html",
+      "images/loading.gif"
+    ],
+  "browser_action": {
+    "default_title": "翻译",
+    "default_icon": "images/19yiiconBlack.png",
+    "default_popup": "popup.html"
+	}
+}
