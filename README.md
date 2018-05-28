@@ -1,6 +1,6 @@
 # 翻译插件（fanyi translation extension）
 
-fanyi , translation chrome Extension From QQ browser, just for google Chrome & myself。(渣渣英语水平,有时候逼自己翻译一些文章，锻炼...)
+for google Chrome extension
 
 # 效果 (screenshot)
 
