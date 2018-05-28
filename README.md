@@ -1,6 +1,6 @@
 # 翻译插件（fanyi translation extension）
 
-for google Chrome extension
+for google Chrome extension  来自qq浏览器官方插件
 
 # 效果 (screenshot)
 
