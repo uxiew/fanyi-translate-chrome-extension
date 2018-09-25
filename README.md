@@ -8,7 +8,7 @@ for google Chrome extension  来自qq浏览器官方插件
 
 ![](independent.co.uk.jpg)
 
-# 使用（userage）
+# 使用（useage）
 打开google Chrome 扩展 开发者 模式，加载已解压的扩展程序
 
 # TODO
